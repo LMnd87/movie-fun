@@ -2,6 +2,7 @@ package org.superbiz.moviefun;
 
 import com.fasterxml.jackson.databind.MappingIterator;
 import com.fasterxml.jackson.databind.ObjectReader;
+import com.fasterxml.jackson.dataformat.csv.CsvSchema;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -13,8 +14,10 @@ import java.util.Scanner;
 public class CsvUtils {
 
     public static String readFile(String path) {
+        ClassLoader classLoader = CsvUtils.class.getClassLoader();
+
         try {
-            Scanner scanner = new Scanner(new File(path)).useDelimiter("\\A");
+            Scanner scanner = new Scanner(classLoader.getResourceAsStream(path)).useDelimiter("\\A");
 
             if (scanner.hasNext()) {
                 return scanner.next();
@@ -22,7 +25,7 @@ public class CsvUtils {
                 return "";
             }
 
-        } catch (FileNotFoundException e) {
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
