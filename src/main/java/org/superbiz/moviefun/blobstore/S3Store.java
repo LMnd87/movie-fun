@@ -52,7 +52,7 @@ public class S3Store implements BlobStore{
 
     @Override
     public void deleteAll() throws IOException {
-        
+
 
     }
 }
