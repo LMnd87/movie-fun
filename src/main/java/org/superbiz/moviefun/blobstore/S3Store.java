@@ -57,6 +57,7 @@ public class S3Store implements BlobStore {
 
         for (S3ObjectSummary summary : summaries) {
             s3.deleteObject(bucketName, summary.getKey());
+
         }
     }
 }

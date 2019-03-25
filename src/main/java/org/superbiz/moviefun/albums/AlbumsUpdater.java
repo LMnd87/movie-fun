@@ -86,4 +86,5 @@ public class AlbumsUpdater {
         maybeExisting.ifPresent(existing -> album.setId(existing.getId()));
         return album;
     }
+
 }
